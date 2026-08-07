@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { analyzePixelBuffer } from "@/lib/image-processing/analyze";
 import {
@@ -264,7 +265,7 @@ export function AnalysisStudio({ startWithDemo = false }: { startWithDemo?: bool
               <span className="eyebrow">Interpretation boundary</span>
               <h3>Technical quality is not diagnostic quality.</h3>
               <p>A visually improved image may alter quantitative information. Preserve the original, document preprocessing, and calibrate thresholds for each modality and acquisition system.</p>
-              <a href="/methodology" className="text-link">Read methodology and limitations →</a>
+              <Link href="/methodology" className="text-link">Read methodology and limitations →</Link>
             </article>
           </section>
         </>
