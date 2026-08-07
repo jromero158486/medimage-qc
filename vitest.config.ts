@@ -1,0 +1,10 @@
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    environment: "jsdom",
+    include: ["src/tests/**/*.test.ts"],
+    coverage: { reporter: ["text", "html"] }
+  },
+  resolve: { alias: { "@": new URL("./src", import.meta.url).pathname } }
+});
