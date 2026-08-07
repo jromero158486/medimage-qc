@@ -66,8 +66,14 @@ export function downloadPdf(result: AnalysisResult): void {
     "Disclaimer",
     "Heuristic technical quality assessment for research and education. Not intended for clinical diagnosis or decision-making. Thresholds require modality-specific validation.",
   ];
+
   const pdf = createSimplePdf(lines);
-  saveBlob(new Blob([pdf], { type: "application/pdf" }), `${baseName(result.metadata.fileName)}-qc-report.pdf`);
+  const pdfBuffer = new ArrayBuffer(pdf.byteLength);
+  new Uint8Array(pdfBuffer).set(pdf);
+
+  saveBlob(
+    new Blob([pdfBuffer], { type: "application/pdf" }),
+    `${baseName(result.metadata.fileName)}-qc-report.pdf`,);
 }
 
 function createSimplePdf(lines: string[]): Uint8Array {
